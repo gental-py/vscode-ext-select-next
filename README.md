@@ -1,4 +1,4 @@
-# vscode-go-to-next-character
+# vscode-go-to-next-characters
 
 Looking to 10x your navigation efficiency in VSCode? Drop that mouse and just press <kbd>CTRL</kbd> + <kbd>K</kbd> + <kbd>H</kbd> to move to the next character (or selected characters!). You can also quickly move your cursor to the next occurance of character(s) with <kbd>CTRL</kbd> + <kbd>K</kbd> + <kbd>G</kbd>
 
