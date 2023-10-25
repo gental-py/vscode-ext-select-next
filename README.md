@@ -28,6 +28,10 @@ I have not included any adjustable settings... yet...
 
 Users appreciate release notes as you update your extension.
 
+### 1.0.1
+
+Added icon and publishing information
+
 ### 1.0.0
 
 Initial release

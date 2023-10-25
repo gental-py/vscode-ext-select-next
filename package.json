@@ -2,11 +2,20 @@
   "name": "go-to-next-characters",
   "displayName": "Go to next characters",
   "description": "VSCode extension that enables quick traversal to the next occurance of the character(s) in front of (or selected by) your cursor",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.83.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pTinosq/vscode-go-to-next-characters"
+  },
+  "license": "GNU GPLv3",
+  "author": "pTinosq",
+  "publisher": "pTinosq",
   "categories": [
+    "Keymaps",
     "Other"
   ],
   "activationEvents": [],
