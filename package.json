@@ -2,7 +2,7 @@
   "name": "go-to-next-characters",
   "displayName": "Go to next characters",
   "description": "VSCode extension that enables quick traversal to the next occurance of the character(s) in front of (or selected by) your cursor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.83.0"
@@ -23,22 +23,22 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.goToNext",
-        "title": "Log Character"
+        "command": "extension.ptinosq.gtnc.goToNext",
+        "title": "Go to next character"
       },
       {
-        "command": "extension.goToSearch",
-        "title": "Find Word"
+        "command": "extension.ptinosq.gtnc.goToSearch",
+        "title": "Go to next word (search)"
       }
     ],
     "keybindings": [
       {
-        "command": "extension.goToNext",
+        "command": "extension.ptinosq.gtnc.goToNext",
         "key": "ctrl+k ctrl+h",
         "when": "editorTextFocus"
       },
       {
-        "command": "extension.goToSearch",
+        "command": "extension.ptinosq.gtnc.goToSearch",
         "key": "ctrl+k ctrl+g",
         "when": "editorTextFocus"
       }

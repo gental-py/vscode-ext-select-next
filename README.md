@@ -14,7 +14,6 @@ For example if there is an image subfolder under your extension project workspac
 
 ![search and move to character(s)](https://i.imgur.com/C1mykzV.gif)
 
-
 ## Requirements
 
 - VSCode
@@ -27,6 +26,10 @@ I have not included any adjustable settings... yet...
 ## Release Notes
 
 Users appreciate release notes as you update your extension.
+
+### 1.0.1
+
+Improved keybind documentation and editing
 
 ### 1.0.1
 
