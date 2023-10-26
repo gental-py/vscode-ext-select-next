@@ -2,7 +2,7 @@
   "name": "go-to-next-characters",
   "displayName": "Go to next characters",
   "description": "VSCode extension that enables quick traversal to the next occurance of the character(s) in front of (or selected by) your cursor",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.83.0"

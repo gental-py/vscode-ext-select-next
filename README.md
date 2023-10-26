@@ -27,7 +27,11 @@ I have not included any adjustable settings... yet...
 
 Users appreciate release notes as you update your extension.
 
-### 1.0.1
+### 1.0.3
+
+Bug fixes
+
+### 1.0.2
 
 Improved keybind documentation and editing
 
