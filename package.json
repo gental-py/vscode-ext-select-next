@@ -1,19 +1,19 @@
 {
-  "name": "go-to-next-characters",
-  "displayName": "Go to next characters",
-  "description": "VSCode extension that enables quick traversal to the next occurance of the character(s) in front of (or selected by) your cursor",
-  "version": "1.0.3",
+  "name": "select-next-occurance",
+  "displayName": "Select next word occurance",
+  "description": "VSCode extension that finds next occurance of a string and selects entire word ",
+  "version": "1.0.0",
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.83.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pTinosq/vscode-go-to-next-characters"
+    "url": "https://github.com/gental-py/vscode-ext-select-next"
   },
   "license": "GNU GPLv3",
-  "author": "pTinosq",
-  "publisher": "pTinosq",
+  "author": "gental-py",
+  "publisher": "gental-py",
   "categories": [
     "Keymaps",
     "Other"
@@ -23,22 +23,13 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.ptinosq.gtnc.goToNext",
-        "title": "Go to next character"
-      },
-      {
-        "command": "extension.ptinosq.gtnc.goToSearch",
-        "title": "Go to next word (search)"
+        "command": "extension.gentalpy.snwo.selectNextWord",
+        "title": "Select next word occurance (search)"
       }
     ],
     "keybindings": [
       {
-        "command": "extension.ptinosq.gtnc.goToNext",
-        "key": "ctrl+k ctrl+h",
-        "when": "editorTextFocus"
-      },
-      {
-        "command": "extension.ptinosq.gtnc.goToSearch",
+        "command": "extension.gentalpy.snwo.selectNextWord",
         "key": "ctrl+k ctrl+g",
         "when": "editorTextFocus"
       }

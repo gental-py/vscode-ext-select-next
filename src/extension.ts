@@ -1,68 +1,50 @@
 import * as vscode from "vscode";
 
-export function activate(context: vscode.ExtensionContext) {
-  let goToNext = vscode.commands.registerCommand(
-    "extension.ptinosq.gtnc.goToNext",
-    () => {
-      const editor = vscode.window.activeTextEditor;
-      if (editor) {
-        const text = editor.document.getText();
-        const newSelections: vscode.Selection[] = [];
+const WORD_TERMINATION_CHARS = " \t\n:;[]()<>{}/.,?'\""; 
 
-        for (const selection of editor.selections) {
-          let textToSearch;
-          if (selection.isEmpty) {
-            // If no text is selected, get the character at the cursor.
-            textToSearch = editor.document.getText(
-              new vscode.Range(selection.start, selection.end.translate(0, 1))
-            );
-          } else {
-            // If text is selected, use the selected text.
-            textToSearch = editor.document.getText(selection);
-          }
+function getNextCharacterAndPosition(document: vscode.TextDocument, position: vscode.Position): [string | undefined, vscode.Position | undefined] {
+    const lineText = document.lineAt(position.line).text;
 
-          const regex = new RegExp(escapeRegExp(textToSearch), "g");
-          let match;
-          while ((match = regex.exec(text))) {
-            const matchPosition = editor.document.positionAt(match.index);
-            if (matchPosition.isAfter(selection.active)) {
-              newSelections.push(
-                new vscode.Selection(matchPosition, matchPosition)
-              );
-              break;
-            }
-          }
-        }
-
-        if (newSelections.length > 0) {
-          editor.selections = newSelections;
-          editor.revealRange(
-            new vscode.Range(newSelections[0].start, newSelections[0].end)
-          );
-        }
-      }
+    if (position.character < lineText.length) {
+        const nextPosition = position.translate(0, 1);
+        const nextCharacter = lineText.charAt(position.character + 1);
+        return [nextCharacter || undefined, nextPosition];
+    } else {
+        return [undefined, undefined];
     }
-  );
+}
 
-  // Register the new command
-  let goToSearch = vscode.commands.registerCommand(
-    "extension.ptinosq.gtnc.goToSearch",
+export function activate(context: vscode.ExtensionContext) {
+  let selectSearch = vscode.commands.registerCommand(
+    "extension.gentalpy.snwo.selectNextWord",
     async () => {
       const editor = vscode.window.activeTextEditor;
       if (editor) {
         const wordToSearch = await vscode.window.showInputBox({
-          prompt: "Enter the character / word to search for",
+          prompt: "String query...",
         });
         if (wordToSearch) {
           const text = editor.document.getText();
           const regex = new RegExp(escapeRegExp(wordToSearch), "g");
+
           let match;
           while ((match = regex.exec(text))) {
             const matchPosition = editor.document.positionAt(match.index);
             if (matchPosition.isAfter(editor.selection.active)) {
+              let nextPos = matchPosition;
+
+              while (nextPos !== undefined) {
+                let [char, next] = getNextCharacterAndPosition(editor.document, nextPos); 
+                if (char === undefined || next === undefined) { break; }
+                if (WORD_TERMINATION_CHARS.includes(char)) { break; }
+
+                nextPos = next;
+              }
+
+              const stopPos = nextPos.translate(0, 1);
               editor.selection = new vscode.Selection(
                 matchPosition,
-                matchPosition
+                stopPos
               );
               editor.revealRange(
                 new vscode.Range(matchPosition, matchPosition)
@@ -75,7 +57,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
-  context.subscriptions.push(goToNext, goToSearch);
+  context.subscriptions.push(selectSearch);
 }
 
 export function deactivate() {}
